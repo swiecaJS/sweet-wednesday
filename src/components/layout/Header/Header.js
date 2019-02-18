@@ -1,11 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import "./Header.scss";
 
-function Header() {
+function Header({ history }) {
   return (
     <header className="header">
-      <div className="logoWrapper">
+      <div
+        className="logoWrapper"
+        role="presentation"
+        onClick={() => history.push("/")}
+      >
         <img
           src="https://www.netguru.com/hubfs/images/ico/tiles/netguru.png"
           alt="Netguru logo"
@@ -18,4 +22,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default withRouter(Header);

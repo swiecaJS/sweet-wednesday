@@ -1,0 +1,22 @@
+.cityBtn {
+  margin: 20px 10px 10px;
+  padding: 9px 20px 6px;
+  border: 2px solid #00d664;
+  color: #00d664;
+  border-radius: 50px;
+  font-weight: 500;
+  // transition: background 0.5s ease, border-color 0.5s ease,
+  //   border-color 0.5s ease;
+  transition: all 0.5s ease;
+
+  &:hover {
+    transition: all 0.5s ease;
+    // transition: background 0.5s ease, border-color 0.5s ease,
+    //   border-color 0.5s ease, color 0.5s ease;
+    background: #00d664;
+    border-color: #00d664;
+    box-shadow: 0 9px 32px 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+    cursor: pointer;
+  }
+}

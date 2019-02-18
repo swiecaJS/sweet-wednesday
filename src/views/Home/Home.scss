@@ -5,4 +5,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.content {
+  h1 {
+    font-size: 48px;
+    color: #333;
+    text-transform: uppercase;
+    font-weight: 900;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.1);
+
+    span {
+      margin-left: 10px;
+    }
+  }
+}
+
+.cities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .citiesButtonsWrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-width: 360px;
+    padding: 5px;
+  }
 }
