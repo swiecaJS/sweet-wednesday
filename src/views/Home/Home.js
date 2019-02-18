@@ -3,34 +3,10 @@ import withLayout from "../../hoc/withLayout";
 import "./Home.scss";
 import CityButton from "../../components/layout/CityButton";
 
-function Home() {
-  const cities = [
-    {
-      uri: "krakow",
-      name: "Kraków"
-    },
-    {
-      uri: "warszawa",
-      name: "Warszawa"
-    },
-    {
-      uri: "poznan",
-      name: "Poznań"
-    },
-    {
-      uri: "wroclaw",
-      name: "Wrocław"
-    },
-    {
-      uri: "gdansk",
-      name: "Gdańsk"
-    },
-    {
-      uri: "bialystok",
-      name: "Białystok"
-    }
-  ];
+import { connect } from "react-redux";
+import { compose } from "redux";
 
+function Home({ cities }) {
   const renderButtons = () => {
     return cities.map(city => {
       return <CityButton key={city.uri} {...city} />;
@@ -55,5 +31,13 @@ function Home() {
   );
 }
 
-export default withLayout(Home);
-// export default Home;
+const mapStateToProps = state => {
+  return {
+    cities: state.cities
+  };
+};
+
+export default compose(
+  withLayout,
+  connect(mapStateToProps)
+)(Home);
