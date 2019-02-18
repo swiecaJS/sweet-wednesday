@@ -12,8 +12,7 @@ function City({ match }) {
   const cityUri = match.params.city;
   return (
     <Container>
-      <h1>City view {cityUri}</h1>
-      <CityInformation />
+      <CityInformation cityUri={cityUri} />
       <FoodForm />
       <CityTable />
     </Container>
