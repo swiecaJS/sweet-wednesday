@@ -4,9 +4,19 @@ import "./Home.scss";
 
 function Home() {
   return (
-    <div>
-      <h1>Sweet Wednesday</h1>
-    </div>
+    <section className="home">
+      <div className="content">
+        <h1>
+          Sweet Wednesday
+          <span role="img" aria-label="emojis of cake">
+            🧁🍰🥮
+          </span>
+        </h1>
+        <div className="cities">
+          <p>btns</p>
+        </div>
+      </div>
+    </section>
   );
 }
 

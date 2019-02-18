@@ -1,6 +1,31 @@
-header {
-  background: red;
+@import "../../../shared/styles/index.scss";
+
+.header {
+  background: #eee;
+  width: 100vw;
+  height: $header-height;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 8px 6px -6px black;
   h1 {
     color: white;
+    margin: 0;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 25px;
+  cursor: pointer;
+  img {
+    height: 50px;
+    margin-right: 10px;
+  }
+
+  span {
+    font-size: 50px;
   }
 }
