@@ -13,8 +13,8 @@ function City({ match }) {
   return (
     <Container>
       <CityInformation cityUri={cityUri} />
-      <FoodForm />
-      <CityTable />
+      <FoodForm cityUri={cityUri} />
+      <CityTable cityUri={cityUri} />
     </Container>
   );
 }

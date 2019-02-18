@@ -1,6 +1,20 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-function CityTable() {
+import { connect } from "react-redux";
+function CityTable(props) {
+  const renderRows = sweets => {
+    return sweets.map(sweet => {
+      console.log(sweet);
+      return (
+        <Table.Row key={sweet.productId}>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>{sweet.url}</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+        </Table.Row>
+      );
+    });
+  };
   return (
     <Table celled>
       <Table.Header>
@@ -13,10 +27,19 @@ function CityTable() {
       </Table.Header>
 
       <Table.Body>
+        {renderRows(props.sweets)}
         <Table.Row>
           <Table.Cell>Cell</Table.Cell>
           <Table.Cell>
             https://www.e-piotripawel.pl/towar/pestki-dyni/22209
+          </Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>Cell</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>
+            https://www.e-piotripawel.pl/towar/czekolada-kinder/200856
           </Table.Cell>
           <Table.Cell>Cell</Table.Cell>
           <Table.Cell>Cell</Table.Cell>
@@ -26,4 +49,14 @@ function CityTable() {
   );
 }
 
-export default CityTable;
+const mapStateToProps = (state, ownProps) => {
+  console.log("CityTable", state, ownProps);
+  const citySweets = state.sweets.filter(
+    sweet => sweet.city === ownProps.cityUri
+  );
+  return {
+    sweets: citySweets
+  };
+};
+
+export default connect(mapStateToProps)(CityTable);
