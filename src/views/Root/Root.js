@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 
-import reducers from "../../reducers";
+import reducers from "../../store/reducers";
 
 import Home from "../Home";
 import City from "../City";

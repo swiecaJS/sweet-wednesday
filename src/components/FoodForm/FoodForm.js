@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
-import { addCandy } from "../../actions";
+import { addCandy } from "../../store/actions";
 import { connect } from "react-redux";
 
 const FormExampleForm = props => {
