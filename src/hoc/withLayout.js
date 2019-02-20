@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../components/layout/Header";
+import "./Layout.scss";
 
 const withLayout = WrappedComponent => {
   return () => {
     return (
-      <React.Fragment>
+      <div class="bg">
         <Header />
         <WrappedComponent />
-      </React.Fragment>
+      </div>
     );
   };
 };
