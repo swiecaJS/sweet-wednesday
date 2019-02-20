@@ -1,2 +1,3 @@
 export const ADD_CANDY = "ADD_CANDY";
 export const INCREMENT_QUANTITY = "INCREMENT_QUANTITY";
+export const SET_CANDY_NAME = "SET_CANDY_NAME";

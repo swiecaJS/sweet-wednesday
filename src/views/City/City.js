@@ -6,12 +6,12 @@ import withLayout from "../../hoc/withLayout";
 import CityTable from "../../components/layout/CityTable";
 import FoodForm from "../../components/FoodForm";
 import CityInformation from "../../components/CityInformation";
+import "./City.scss";
 
 function City({ match }) {
-  console.log("city", match.params.city);
   const cityUri = match.params.city;
   return (
-    <Container>
+    <Container className="cityWrapper">
       <CityInformation cityUri={cityUri} />
       <FoodForm cityUri={cityUri} />
       <CityTable cityUri={cityUri} />

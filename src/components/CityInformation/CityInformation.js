@@ -6,7 +6,6 @@ const MoneyLeft = props => {
   return (
     <div>
       <h2>{city.name}</h2>
-      <p>Moeny left</p>
     </div>
   );
 };

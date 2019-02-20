@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import { addCandy } from "../../store/actions";
 import { connect } from "react-redux";
+import "./FoodForm.scss";
 
 const FormExampleForm = props => {
   const [urls, setUrls] = useState("");
@@ -15,16 +16,18 @@ const FormExampleForm = props => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Field>
-        <label>Provide urls for Piotr i Paweł, every url in new line</label>
-        <textarea value={urls} onChange={e => setUrls(e.target.value)} />
-      </Form.Field>
+    <section className="formWrapper">
+      <h4>Provide urls for Piotr i Paweł, every url in new line</h4>
+      <Form onSubmit={handleSubmit}>
+        <Form.Field>
+          <textarea value={urls} onChange={e => setUrls(e.target.value)} />
+        </Form.Field>
 
-      <Button floated="right" type="submit">
-        Submit
-      </Button>
-    </Form>
+        <Button floated="right" type="submit">
+          Submit
+        </Button>
+      </Form>
+    </section>
   );
 };
 
