@@ -49,9 +49,10 @@ function CityTable(props) {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log("CityTable mapstateToProps", state, ownProps);
   let sweets = [];
   if (state.sweets.hasOwnProperty(ownProps.cityUri)) {
-    sweets = state.sweets[ownProps.cityUri];
+    sweets = Object.values(state.sweets[ownProps.cityUri]);
   }
   return {
     sweets

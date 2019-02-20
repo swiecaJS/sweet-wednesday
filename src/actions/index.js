@@ -1,4 +1,5 @@
 import isUrl from "is-url";
+
 import { ADD_CANDY, CHANGE_QUANTITY } from "./types";
 
 export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
@@ -6,6 +7,13 @@ export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
     if (isUrl(url) && url.includes("piotripawel")) {
       // examoole url https://www.e-piotripawel.pl/towar/pestki-dyni/22209
       const productId = url.split("/").pop();
+
+      const sweets = getState().sweets;
+      const isCandyInState =
+        sweets.hasOwnProperty(cityUri) &&
+        sweets[cityUri].hasOwnProperty(productId);
+
+      console.log("isCandyInState", isCandyInState);
 
       dispatch({
         type: ADD_CANDY,

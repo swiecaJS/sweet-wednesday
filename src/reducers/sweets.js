@@ -8,12 +8,17 @@ export default (state = initialState, action) => {
         const currentCitySweets = state[action.payload.city];
         return {
           ...state,
-          [action.payload.city]: [...currentCitySweets, action.payload.data]
+          [action.payload.city]: {
+            ...currentCitySweets,
+            [action.payload.data.productId]: action.payload.data
+          }
         };
       } else {
         return {
           ...state,
-          [action.payload.city]: [action.payload.data]
+          [action.payload.city]: {
+            [action.payload.data.productId]: action.payload.data
+          }
         };
       }
     default:
