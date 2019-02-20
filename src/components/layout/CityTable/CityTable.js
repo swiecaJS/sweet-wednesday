@@ -4,12 +4,11 @@ import { connect } from "react-redux";
 function CityTable(props) {
   const renderRows = sweets => {
     return sweets.map(sweet => {
-      console.log(sweet);
       return (
         <Table.Row key={sweet.productId}>
           <Table.Cell>Cell</Table.Cell>
           <Table.Cell>{sweet.url}</Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
+          <Table.Cell>{sweet.quantity}</Table.Cell>
           <Table.Cell>Cell</Table.Cell>
         </Table.Row>
       );
@@ -50,12 +49,12 @@ function CityTable(props) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("CityTable", state, ownProps);
-  const citySweets = state.sweets.filter(
-    sweet => sweet.city === ownProps.cityUri
-  );
+  let sweets = [];
+  if (state.sweets.hasOwnProperty(ownProps.cityUri)) {
+    sweets = state.sweets[ownProps.cityUri];
+  }
   return {
-    sweets: citySweets
+    sweets
   };
 };
 

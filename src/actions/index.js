@@ -1,22 +1,48 @@
 import isUrl from "is-url";
-import { ADD_CANDY } from "./types";
+import { ADD_CANDY, CHANGE_QUANTITY } from "./types";
 
-export const addCandy = (urlsArray, cityUri) => dispatch => {
-  urlsArray.forEach(currentValue => {
-    if (isUrl(currentValue) && currentValue.includes("piotripawel")) {
+export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
+  urlsArray.forEach(url => {
+    if (isUrl(url) && url.includes("piotripawel")) {
       // examoole url https://www.e-piotripawel.pl/towar/pestki-dyni/22209
-      const productId = currentValue.split("/").pop();
-      const payload = {
-        productId,
-        url: currentValue,
-        city: cityUri
-      };
-      console.log("adding candy", payload);
+      const productId = url.split("/").pop();
+
       dispatch({
         type: ADD_CANDY,
-        payload
+        payload: {
+          city: cityUri,
+          data: {
+            url,
+            productId,
+            quantity: 1
+          }
+        }
       });
+
+      // const isCandyUnique =
+      //   getState().sweets.filter(sweet => sweet.productId === productId)
+      //     .length === 0;
+      // if (isCandyUnique) {
+      // } else {
+      //   dispatch({
+      //     type: ADD_CANDY,
+      //     payload: { ...payload, quantity: 1 }
+      //   });
+      // }
+
+      // console.log("adding candy", payload);
     }
+  });
+};
+
+export const changeCandyQuantity = candy => (dispatch, getState) => {
+  const newSweets = getState().sweets.filter(
+    sweet => sweet.productId !== candy.productId
+  );
+
+  dispatch({
+    type: CHANGE_QUANTITY,
+    payload: [...newSweets, candy]
   });
 };
 
