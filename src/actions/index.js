@@ -1,6 +1,6 @@
 import isUrl from "is-url";
 
-import { ADD_CANDY, CHANGE_QUANTITY } from "./types";
+import { ADD_CANDY, INCREMENT_QUANTITY } from "./types";
 
 export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
   urlsArray.forEach(url => {
@@ -15,42 +15,28 @@ export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
 
       console.log("isCandyInState", isCandyInState);
 
-      dispatch({
-        type: ADD_CANDY,
-        payload: {
-          city: cityUri,
-          data: {
-            url,
-            productId,
-            quantity: 1
+      if (isCandyInState) {
+        dispatch({
+          type: INCREMENT_QUANTITY,
+          payload: {
+            city: cityUri,
+            productId
           }
-        }
-      });
-
-      // const isCandyUnique =
-      //   getState().sweets.filter(sweet => sweet.productId === productId)
-      //     .length === 0;
-      // if (isCandyUnique) {
-      // } else {
-      //   dispatch({
-      //     type: ADD_CANDY,
-      //     payload: { ...payload, quantity: 1 }
-      //   });
-      // }
-
-      // console.log("adding candy", payload);
+        });
+      } else {
+        dispatch({
+          type: ADD_CANDY,
+          payload: {
+            city: cityUri,
+            data: {
+              url,
+              productId,
+              quantity: 1
+            }
+          }
+        });
+      }
     }
-  });
-};
-
-export const changeCandyQuantity = candy => (dispatch, getState) => {
-  const newSweets = getState().sweets.filter(
-    sweet => sweet.productId !== candy.productId
-  );
-
-  dispatch({
-    type: CHANGE_QUANTITY,
-    payload: [...newSweets, candy]
   });
 };
 

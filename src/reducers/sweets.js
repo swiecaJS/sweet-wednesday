@@ -1,4 +1,4 @@
-import { ADD_CANDY } from "../actions/types";
+import { ADD_CANDY, INCREMENT_QUANTITY } from "../actions/types";
 const initialState = {};
 
 export default (state = initialState, action) => {
@@ -21,6 +21,19 @@ export default (state = initialState, action) => {
           }
         };
       }
+    case INCREMENT_QUANTITY:
+      const currentCitySweets = state[action.payload.city];
+      const candy = state[action.payload.city][action.payload.productId];
+      candy.quantity = candy.quantity + 1;
+
+      return {
+        ...state,
+        [action.payload.city]: {
+          ...currentCitySweets,
+          [action.payload.productId]: candy
+        }
+      };
+
     default:
       return state;
   }
