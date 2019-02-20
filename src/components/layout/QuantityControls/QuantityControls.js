@@ -1,15 +1,31 @@
 import React from "react";
 import { Icon } from "semantic-ui-react";
-const QuantityControls = ({ productId, cityUri }) => {
+import { connect } from "react-redux";
+import {
+  incrementCandyQuantity,
+  decrementCandyQuantity
+} from "../../../store/actions";
+const QuantityControls = ({
+  productId,
+  cityUri,
+  incrementCandyQuantity,
+  decrementCandyQuantity
+}) => {
   return (
     <div className="controls">
-      <p>
-        {productId} {cityUri}
-      </p>
-      <Icon name="minus" />
-      <Icon name="plus" />
+      <Icon
+        name="minus"
+        onClick={() => decrementCandyQuantity(cityUri, productId)}
+      />
+      <Icon
+        name="plus"
+        onClick={() => incrementCandyQuantity(cityUri, productId)}
+      />
     </div>
   );
 };
 
-export default QuantityControls;
+export default connect(
+  null,
+  { incrementCandyQuantity, decrementCandyQuantity }
+)(QuantityControls);

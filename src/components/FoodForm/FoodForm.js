@@ -9,9 +9,7 @@ const FormExampleForm = props => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    console.log("current value of urls", urls, urls.split("\n"));
     const urlsArray = urls.split("\n");
-    console.log("handle submit", urlsArray, props);
     props.addCandy(urlsArray, props.cityUri);
   };
 
@@ -32,7 +30,6 @@ const FormExampleForm = props => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("FoodForm", state.sweets, ownProps);
   return {};
 };
 

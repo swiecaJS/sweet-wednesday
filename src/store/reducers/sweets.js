@@ -1,7 +1,8 @@
 import {
   ADD_CANDY,
   INCREMENT_QUANTITY,
-  SET_CANDY_NAME
+  SET_CANDY_NAME,
+  DECREMENT_QUANTITY
 } from "../actions/types";
 const initialState = {};
 
@@ -33,6 +34,19 @@ export default (state = initialState, action) => {
       }
     case INCREMENT_QUANTITY:
       candy.quantity = candy.quantity + 1;
+
+      return {
+        ...state,
+        [action.payload.city]: {
+          ...currentCitySweets,
+          [action.payload.productId]: candy
+        }
+      };
+    case DECREMENT_QUANTITY:
+      if (candy.quantity === 1) {
+        return state;
+      }
+      candy.quantity = candy.quantity - 1;
 
       return {
         ...state,

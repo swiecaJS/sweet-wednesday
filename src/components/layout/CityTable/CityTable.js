@@ -11,7 +11,7 @@ function CityTable(props) {
       return (
         <Table.Row key={sweet.productId}>
           <Table.Cell>{sweet.url}</Table.Cell>
-          <Table.Cell class>
+          <Table.Cell>
             <div className="quantityWrapper">
               {sweet.quantity}
               <QuantityControls

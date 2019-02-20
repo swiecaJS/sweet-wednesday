@@ -1,6 +1,6 @@
 import isUrl from "is-url";
 
-import { ADD_CANDY, INCREMENT_QUANTITY } from "./types";
+import { ADD_CANDY, INCREMENT_QUANTITY, DECREMENT_QUANTITY } from "./types";
 
 export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
   urlsArray.forEach(url => {
@@ -34,6 +34,25 @@ export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
           }
         });
       }
+    }
+  });
+};
+
+export const incrementCandyQuantity = (city, productId) => dispatch => {
+  dispatch({
+    type: INCREMENT_QUANTITY,
+    payload: {
+      city,
+      productId
+    }
+  });
+};
+export const decrementCandyQuantity = (city, productId) => dispatch => {
+  dispatch({
+    type: DECREMENT_QUANTITY,
+    payload: {
+      city,
+      productId
     }
   });
 };
