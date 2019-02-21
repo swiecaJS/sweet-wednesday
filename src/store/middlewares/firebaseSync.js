@@ -2,7 +2,8 @@ import {
   ADD_CANDY,
   DECREMENT_QUANTITY,
   INCREMENT_QUANTITY,
-  SET_LOADER
+  SET_LOADER,
+  DELETE_CANDY
 } from "../actions/types";
 import _ from "lodash";
 import * as firebase from "firebase";
@@ -13,7 +14,8 @@ export const firebaseSync = store => next => action => {
   const actionsRelatedToSync = [
     ADD_CANDY,
     DECREMENT_QUANTITY,
-    INCREMENT_QUANTITY
+    INCREMENT_QUANTITY,
+    DELETE_CANDY
   ];
 
   if (actionsRelatedToSync.includes(action.type)) {

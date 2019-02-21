@@ -6,7 +6,8 @@ import {
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
   SET_LOADER,
-  FETCH_CANDIES
+  FETCH_CANDIES,
+  DELETE_CANDY
 } from "./types";
 
 export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
@@ -41,6 +42,17 @@ export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
           }
         });
       }
+    }
+  });
+};
+
+export const deleteCandy = (city, productId) => dispatch => {
+  console.log("deleteCandy", city, productId);
+  dispatch({
+    type: DELETE_CANDY,
+    payload: {
+      city,
+      productId
     }
   });
 };

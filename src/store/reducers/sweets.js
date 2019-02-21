@@ -2,8 +2,10 @@ import {
   ADD_CANDY,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
-  FETCH_CANDIES
+  FETCH_CANDIES,
+  DELETE_CANDY
 } from "../actions/types";
+import _ from "lodash";
 const initialState = {};
 
 export default (state = initialState, action) => {
@@ -53,6 +55,13 @@ export default (state = initialState, action) => {
         [action.payload.city]: {
           ...currentCitySweets,
           [action.payload.productId]: candy
+        }
+      };
+    case DELETE_CANDY:
+      return {
+        ...state,
+        [action.payload.city]: {
+          ..._.omit(currentCitySweets, action.payload.productId)
         }
       };
     case FETCH_CANDIES:

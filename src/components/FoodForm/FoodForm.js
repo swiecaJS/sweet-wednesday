@@ -15,8 +15,18 @@ const FormExampleForm = props => {
 
   return (
     <section className="formWrapper">
-      <h4>Provide urls from Piotr i Paweł, every url in new line</h4>
-      <em>https://www.e-piotripawel.pl/towar/pestki-dyni/22209</em>
+      <h4>
+        Provide urls from{" "}
+        <a
+          href="https://www.e-piotripawel.pl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Piotr i Paweł
+        </a>
+        , every url in new line
+      </h4>
+      <em>e.g. https://www.e-piotripawel.pl/towar/pestki-dyni/22209</em>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
           <textarea value={urls} onChange={e => setUrls(e.target.value)} />

@@ -3,13 +3,15 @@ import { Icon } from "semantic-ui-react";
 import { connect } from "react-redux";
 import {
   incrementCandyQuantity,
-  decrementCandyQuantity
+  decrementCandyQuantity,
+  deleteCandy
 } from "../../../store/actions";
 const QuantityControls = ({
   productId,
   cityUri,
   incrementCandyQuantity,
-  decrementCandyQuantity
+  decrementCandyQuantity,
+  deleteCandy
 }) => {
   return (
     <div className="controls">
@@ -21,11 +23,15 @@ const QuantityControls = ({
         name="plus"
         onClick={() => incrementCandyQuantity(cityUri, productId)}
       />
+      <Icon
+        name="trash alternate"
+        onClick={() => deleteCandy(cityUri, productId)}
+      />
     </div>
   );
 };
 
 export default connect(
   null,
-  { incrementCandyQuantity, decrementCandyQuantity }
+  { incrementCandyQuantity, decrementCandyQuantity, deleteCandy }
 )(QuantityControls);
