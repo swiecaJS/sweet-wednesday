@@ -5,10 +5,7 @@ import reducers from "./reducers";
 import { firebaseSync } from "./middlewares/firebaseSync";
 
 // eslint-disable-next-line
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  reducers,
-  composeEnhancers(applyMiddleware(reduxThunk, firebaseSync))
-);
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, applyMiddleware(reduxThunk, firebaseSync));
 
 export default store;
