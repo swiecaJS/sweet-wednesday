@@ -1,0 +1,14 @@
+.shoppingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+
+  p {
+    font-size: 20px;
+  }
+
+  .ui.button {
+    margin: 0 5px;
+  }
+}

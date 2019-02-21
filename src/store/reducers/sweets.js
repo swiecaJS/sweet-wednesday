@@ -56,7 +56,6 @@ export default (state = initialState, action) => {
         }
       };
     case SET_CANDY_NAME:
-      console.log("SET_CANDY_NAME", action, candy, state);
       return state;
     default:
       return state;

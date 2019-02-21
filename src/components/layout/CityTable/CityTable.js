@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Icon } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 import "./CityTable.scss";
 
@@ -24,6 +24,11 @@ function CityTable(props) {
       );
     });
   };
+
+  if (!props.sweets.length) {
+    return null;
+  }
+
   return (
     <Table celled>
       <Table.Header>
@@ -33,35 +38,12 @@ function CityTable(props) {
         </Table.Row>
       </Table.Header>
 
-      <Table.Body>
-        {renderRows(props.sweets)}
-        <Table.Row>
-          <Table.Cell>
-            https://www.e-piotripawel.pl/towar/pestki-dyni/22209
-          </Table.Cell>
-          <Table.Cell>Cell</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>
-            https://www.e-piotripawel.pl/towar/czekolada-kinder/200856
-          </Table.Cell>
-          <Table.Cell>
-            <div className="quantityWrapper">
-              2
-              <div className="controls">
-                <Icon name="minus" />
-                <Icon name="plus" />
-              </div>
-            </div>
-          </Table.Cell>
-        </Table.Row>
-      </Table.Body>
+      <Table.Body>{renderRows(props.sweets)}</Table.Body>
     </Table>
   );
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("CityTable mapstateToProps", state, ownProps);
   let sweets = [];
   if (state.sweets.hasOwnProperty(ownProps.cityUri)) {
     sweets = Object.values(state.sweets[ownProps.cityUri]);

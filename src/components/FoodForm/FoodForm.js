@@ -15,13 +15,14 @@ const FormExampleForm = props => {
 
   return (
     <section className="formWrapper">
-      <h4>Provide urls for Piotr i Paweł, every url in new line</h4>
+      <h4>Provide urls from Piotr i Paweł, every url in new line</h4>
+      <em>https://www.e-piotripawel.pl/towar/pestki-dyni/22209</em>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
           <textarea value={urls} onChange={e => setUrls(e.target.value)} />
         </Form.Field>
 
-        <Button floated="right" type="submit">
+        <Button floated="right" type="submit" className="positive big">
           Submit
         </Button>
       </Form>
@@ -29,11 +30,7 @@ const FormExampleForm = props => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {};
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   { addCandy }
 )(FormExampleForm);

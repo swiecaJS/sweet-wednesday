@@ -6,6 +6,7 @@ import withLayout from "../../hoc/withLayout";
 import CityTable from "../../components/layout/CityTable";
 import FoodForm from "../../components/FoodForm";
 import CityInformation from "../../components/CityInformation";
+import GoShoppingBtn from "../../components/GoShoppingBtn";
 import "./City.scss";
 
 function City({ match }) {
@@ -14,6 +15,7 @@ function City({ match }) {
     <Container className="cityWrapper">
       <CityInformation cityUri={cityUri} />
       <FoodForm cityUri={cityUri} />
+      <GoShoppingBtn cityUri={cityUri} />
       <CityTable cityUri={cityUri} />
     </Container>
   );
