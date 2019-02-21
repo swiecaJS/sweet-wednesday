@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 import * as firebase from "firebase";
-import { fetchCandies } from "../../../store/actions";
+import { fetchCandies, setSyncedCandies } from "../../../store/actions";
 import "./CityTable.scss";
 
 import QuantityControls from "../QuantityControls";
 
 function CityTable(props) {
   useEffect(() => {
-    console.log("CityTable mounted", props);
     if (firebase.apps.length === 0) {
       firebase.initializeApp({
         apiKey: "AIzaSyA1-aKXUHlUXjM8Mgc-4nESFpEAqqHcB_I",
@@ -18,9 +17,19 @@ function CityTable(props) {
         projectId: "vue-meetup-yt",
         storageBucket: "gs://vue-meetup-yt.appspot.com"
       });
+      listenToChangesToTheTable();
     }
     props.fetchCandies();
   }, []);
+
+  const listenToChangesToTheTable = () => {
+    firebase
+      .database()
+      .ref("/sweets")
+      .on("value", data => {
+        props.setSyncedCandies(data.val());
+      });
+  };
 
   const renderRows = sweets => {
     return sweets.map(sweet => {
@@ -71,5 +80,5 @@ const mapStateToProps = (state, ownProps) => {
 
 export default connect(
   mapStateToProps,
-  { fetchCandies }
+  { fetchCandies, setSyncedCandies }
 )(CityTable);

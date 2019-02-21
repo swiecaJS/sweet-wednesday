@@ -6,7 +6,7 @@ import {
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
   SET_LOADER,
-  FETCH_CANDIES,
+  SET_CANDIES,
   DELETE_CANDY
 } from "./types";
 
@@ -57,6 +57,13 @@ export const deleteCandy = (city, productId) => dispatch => {
   });
 };
 
+export const setSyncedCandies = candies => dispatch => {
+  dispatch({
+    type: SET_CANDIES,
+    payload: candies
+  });
+};
+
 export const fetchCandies = () => dispatch => {
   console.log("feczuje candies", firebase);
   if (firebase.apps.length === 0) {
@@ -79,7 +86,7 @@ export const fetchCandies = () => dispatch => {
     .then(data => {
       console.log("firebase data", data.val());
       dispatch({
-        type: FETCH_CANDIES,
+        type: SET_CANDIES,
         payload: data.val()
       });
     })

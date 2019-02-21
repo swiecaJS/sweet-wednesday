@@ -17,7 +17,7 @@ const GoShoppingBtn = ({ cityUri, urls }) => {
   return (
     <section className="shoppingWrapper">
       <p>
-        Are you ready to {cityUri}
+        Are you ready to
         <Button className="big basic positive" onClick={openPeterAndPaulCarts}>
           Go Shopping
         </Button>

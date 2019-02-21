@@ -4,4 +4,4 @@ export const DECREMENT_QUANTITY = "DECREMENT_QUANTITY";
 export const DELETE_CANDY = "DELETE_CANDY";
 export const SET_CANDY_NAME = "SET_CANDY_NAME";
 export const SET_LOADER = "SET_LOADER";
-export const FETCH_CANDIES = "FETCH_CANDIES";
+export const SET_CANDIES = "SET_CANDIES";

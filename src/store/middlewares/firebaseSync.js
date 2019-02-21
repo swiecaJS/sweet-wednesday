@@ -9,8 +9,6 @@ import _ from "lodash";
 import * as firebase from "firebase";
 
 export const firebaseSync = store => next => action => {
-  console.log("firebase sunc here", store, next, action);
-
   const actionsRelatedToSync = [
     ADD_CANDY,
     DECREMENT_QUANTITY,

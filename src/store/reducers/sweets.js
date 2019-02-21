@@ -2,7 +2,7 @@ import {
   ADD_CANDY,
   INCREMENT_QUANTITY,
   DECREMENT_QUANTITY,
-  FETCH_CANDIES,
+  SET_CANDIES,
   DELETE_CANDY
 } from "../actions/types";
 import _ from "lodash";
@@ -64,7 +64,7 @@ export default (state = initialState, action) => {
           ..._.omit(currentCitySweets, action.payload.productId)
         }
       };
-    case FETCH_CANDIES:
+    case SET_CANDIES:
       return {
         ...state,
         ...action.payload
