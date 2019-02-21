@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Table } from "semantic-ui-react";
 import { connect } from "react-redux";
+import * as firebase from "firebase";
+import { fetchCandies } from "../../../store/actions";
 import "./CityTable.scss";
 
 import QuantityControls from "../QuantityControls";
 
 function CityTable(props) {
+  useEffect(() => {
+    console.log("CityTable mounted", props);
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyA1-aKXUHlUXjM8Mgc-4nESFpEAqqHcB_I",
+        authDomain: "vue-meetup-yt.firebaseapp.com",
+        databaseURL: "https://vue-meetup-yt.firebaseio.com",
+        projectId: "vue-meetup-yt",
+        storageBucket: "gs://vue-meetup-yt.appspot.com"
+      });
+    }
+    props.fetchCandies();
+  }, []);
+
   const renderRows = sweets => {
     return sweets.map(sweet => {
       return (
@@ -53,4 +69,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(CityTable);
+export default connect(
+  mapStateToProps,
+  { fetchCandies }
+)(CityTable);

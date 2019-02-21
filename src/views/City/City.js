@@ -9,8 +9,8 @@ import CityInformation from "../../components/CityInformation";
 import GoShoppingBtn from "../../components/GoShoppingBtn";
 import "./City.scss";
 
-function City({ match }) {
-  const cityUri = match.params.city;
+function City(props) {
+  const cityUri = props.match.params.city;
   return (
     <Container className="cityWrapper">
       <CityInformation cityUri={cityUri} />

@@ -1,6 +1,13 @@
 import isUrl from "is-url";
+import * as firebase from "firebase";
 
-import { ADD_CANDY, INCREMENT_QUANTITY, DECREMENT_QUANTITY } from "./types";
+import {
+  ADD_CANDY,
+  INCREMENT_QUANTITY,
+  DECREMENT_QUANTITY,
+  SET_LOADER,
+  FETCH_CANDIES
+} from "./types";
 
 export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
   urlsArray.forEach(url => {
@@ -36,6 +43,40 @@ export const addCandy = (urlsArray, cityUri) => (dispatch, getState) => {
       }
     }
   });
+};
+
+export const fetchCandies = () => dispatch => {
+  console.log("feczuje candies", firebase);
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp({
+      apiKey: "AIzaSyA1-aKXUHlUXjM8Mgc-4nESFpEAqqHcB_I",
+      authDomain: "vue-meetup-yt.firebaseapp.com",
+      databaseURL: "https://vue-meetup-yt.firebaseio.com",
+      projectId: "vue-meetup-yt",
+      storageBucket: "gs://vue-meetup-yt.appspot.com"
+    });
+  }
+  dispatch({
+    type: SET_LOADER,
+    payload: true
+  });
+  firebase
+    .database()
+    .ref("sweets")
+    .once("value")
+    .then(data => {
+      console.log("firebase data", data.val());
+      dispatch({
+        type: FETCH_CANDIES,
+        payload: data.val()
+      });
+    })
+    .finally(() => {
+      dispatch({
+        type: SET_LOADER,
+        payload: false
+      });
+    });
 };
 
 export const incrementCandyQuantity = (city, productId) => dispatch => {

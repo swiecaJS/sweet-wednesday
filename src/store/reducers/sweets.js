@@ -1,8 +1,8 @@
 import {
   ADD_CANDY,
   INCREMENT_QUANTITY,
-  SET_CANDY_NAME,
-  DECREMENT_QUANTITY
+  DECREMENT_QUANTITY,
+  FETCH_CANDIES
 } from "../actions/types";
 const initialState = {};
 
@@ -55,8 +55,11 @@ export default (state = initialState, action) => {
           [action.payload.productId]: candy
         }
       };
-    case SET_CANDY_NAME:
-      return state;
+    case FETCH_CANDIES:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }

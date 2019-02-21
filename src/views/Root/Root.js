@@ -7,7 +7,7 @@ import store from "../../store";
 import Home from "../Home";
 import City from "../City";
 
-export default function Root() {
+const Root = () => {
   return (
     <React.Fragment>
       <Provider store={store}>
@@ -20,4 +20,5 @@ export default function Root() {
       </Provider>
     </React.Fragment>
   );
-}
+};
+export default Root;

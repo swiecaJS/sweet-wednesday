@@ -5,10 +5,10 @@ import "./Layout.scss";
 const withLayout = WrappedComponent => {
   return () => {
     return (
-      <main className="bg">
+      <div className="bg">
         <Header />
         <WrappedComponent />
-      </main>
+      </div>
     );
   };
 };
